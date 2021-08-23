@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id = "canvas"></canvas>
+  <script>
+    const screen_w =800;
+    const screen_h =500;
+    var canv = document.getElementById("canvas");
+    var cont = canv.getContext("2d");
+    canv.width=screen_w;
+    canv.height=screen_h;
+    canv.style.backgroundColor = "#aaa";
+    //--------------------------------------------------
+    var x=50; var y=50;
+    var vx=5; var vy=5;
+    var box = 20;
+    //--------------------------------------------------
+
+    function mainloop()
+    {
+      cont.clearRect(0,0,screen_w,screen_h);
+      cont.fillStyle = "red";
+      cont.fillRect(x, y, box, box);
+      x += vx; y += vy;
+      if (x < 0 || x + box >= screen_w) vx *= -1;
+      if (y < 0 || y + box >= screen_h) vy *= -1;
+
+    }
+
+    setInterval(mainloop , 1000 / 60);
+
+
+  </script>
+</body>
+</html>
